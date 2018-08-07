@@ -11,7 +11,7 @@ import reducers from '../../shared/reducers'
 
 import { SheetsRegistry } from 'react-jss/lib/jss';
 import JssProvider from 'react-jss/lib/JssProvider';
-import { Production, DemoTheme, server } from '../../config'
+import { production, MUIDemoTheme, server } from '../../config'
 
 import {
 	MuiThemeProvider,
@@ -28,7 +28,7 @@ function userStatus(req, res, next) {
       return false
 }
 
-const devTools = Production ? '' : '<script src="http://localhost:8097"></script>'
+const devTools = production ? '' : '<script src="http://localhost:8097"></script>'
 
 app.get('*', (req, res, next) => {
 	
@@ -66,7 +66,7 @@ app.get('*', (req, res, next) => {
 
 		const markup = renderToString(
 		    <JssProvider classNamePrefix={'hermn-app'} registry={sheetsRegistry} generateClassName={generateClassName}>
-				<MuiThemeProvider theme={createMuiTheme(DemoTheme)} sheetsManager={sheetsManager}>
+				<MuiThemeProvider theme={createMuiTheme(MUIDemoTheme)} sheetsManager={sheetsManager}>
 					<Provider store={store}>
 						<StaticRouter location={req.url} context={context}>
 							<App member={userData}/>
@@ -115,12 +115,3 @@ app.get('*', (req, res, next) => {
 })
 
 module.exports = app
-
-
-{/* <script type="text/javascript">
-let app_wrap = document.getElementsByTagName("body")[0]
-app_wrap.style = "height: "+window.innerHeight+"px"
-window.onresize = function () {
-	app_wrap.style = "height: "+window.innerHeight+"px"
-}
-</script> */}

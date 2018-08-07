@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import routes from './routes'
 import { Route, Switch, withRouter } from 'react-router-dom'
-import NoMatch from './containers/NoMatch'
+import NotFound from './containers/NotFound'
 import NavBar from './components/NavBar'
 
 import { bindActionCreators } from 'redux'
@@ -10,7 +10,6 @@ import { ActionCreators } from './actions/index'
 
 
 class App extends Component {
-
 	constructor(props) {
 	  	super(props);
 		let member
@@ -28,13 +27,14 @@ class App extends Component {
 			<div style={{flex: 1, height: '100%'}}>
 				<NavBar/>
 				<Switch>
-					{routes.map( ({path, exact, component: C, ...rest }) => (
-						<Route key={path} path={path} exact={exact} render={(props) => (
-							<C {...props} {...rest} /> )}
-						/>
-					))
+					{
+						routes.map( ({path, exact, component: C, ...rest }) => (
+							<Route key={path} path={path} exact={exact} render={(props) => (
+								<C {...props} {...rest} /> )}
+							/>
+						))
 					}
-					<Route render={(props) => <NoMatch {...props} /> } />
+					<Route render={(props) => <NotFound {...props} /> } />
 				</Switch>
 			</div>
 		)

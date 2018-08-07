@@ -15,7 +15,7 @@ import api from './routes/api.js'
 
 const app = express()
 
-const port = process.env.PORT || 80
+const port = process.env.PORT || 8000
 
 const configDB = require('./config').database
 mongoose.connect(configDB.url)

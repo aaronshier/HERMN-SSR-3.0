@@ -6,7 +6,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducers from '../shared/reducers'
 
-import { DemoTheme, server } from '../config'
+import { MUIDemoTheme, server } from '../config'
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
@@ -38,7 +38,7 @@ class Main extends React.Component {
 }
 
 hydrate(
-    <MuiThemeProvider theme={createMuiTheme(DemoTheme)}>
+    <MuiThemeProvider theme={createMuiTheme(MUIDemoTheme)}>
       <Main />
     </MuiThemeProvider>,
 	document.getElementById('app')

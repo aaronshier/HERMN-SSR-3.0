@@ -2,6 +2,7 @@ import Home from './containers/Home'
 import { fetchDemoData } from './services/outbound'
 import Login from './containers/Login'
 import Signup from './containers/Signup'
+import TestApi from './containers/TestApi'
 
 const routes = [
 	{
@@ -21,20 +22,21 @@ const routes = [
 		exact: true,
 		component: Signup,
 		title: 'Register for a HERMN Account'
+	},
+	{
+		path: '/test/:id',
+		component: TestApi,
+		wildcard: true,
+		title: 'Results for {{id}}',
+		fetchInitialData: (path = '') => fetchDemoData(path.split('/').pop()),
 	}
-	// {
-	// 	path: '/test/:id',
-	// 	component: TestApi,
-	// 	wildcard: true,
-	// 	title: 'Results for {{id}}',
-	// 	fetchInitialData: (path = '') => fetchDemoData(path.split('/').pop()),
-	// }
 ]
 
 export default routes
 
 export const getTitle = ()=>{
 	let url = window.location.href
+		url = url.substring(0, url.indexOf('?', ''))
 		url = url.replace('#', '')
 	let pagePath = '/'+url.split('/').pop()
 	console.log(pagePath)

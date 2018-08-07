@@ -1,4 +1,4 @@
-export const server = `http://localhost:3000`
+export const server = `http://localhost`
 export const demoObject = require('./DemoObjects')
-export const DemoTheme = require('./DemoTheme').default
-export const Production = false
+export const MUIDemoTheme = require('./MUIDemoTheme').default
+export const production = false
