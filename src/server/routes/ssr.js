@@ -98,16 +98,61 @@ app.get('*', (req, res, next) => {
 					<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 					<link rel="stylesheet" type="text/css" href="/css/style.min.css">
 					<style>
-					  html, body, #app, #app>div {
-						height: 100%
-					  }
-					</style>
-					</head>
-					<body id="body_view">
 
-						<div id="app" style="flex: 1;">${markup}</div>
-						<style id="jss-server-side">${css}</style>
-						<script src="/bundle.production.min.js" type="text/javascript"></script>
+						html, body, #app, #app>div {
+							height: 100%
+						}
+
+
+						.fadeSlide-appear {
+							opacity: 0.01;
+							position: relative;
+							transform: translateX(-100px);
+						}
+						
+						.fadeSlide-appear.fadeSlide-appear-active {
+							opacity: 1;
+							transform: translateX(0px);
+							transition: all .5s ease-in-out;
+						}
+
+						.fadeSlide-leave {
+							opacity: 1;
+							transform: translateX(0px);
+						}
+						
+						.fadeSlide-leave.fadeSlide-leave-active {
+							opacity: 0.01;
+							transform: translateX(100px);
+							transition: all 300ms ease-in;
+						}
+
+
+
+						.fade-appear {
+							opacity: 0.01;
+						}
+						
+						.fade-appear.fade-appear-active {
+							opacity: 1;
+							transition: opacity 500ms ease-in;
+						}
+						
+						.fade-leave {
+							opacity: 1;
+						}
+						
+						.fade-leave.fade-leave-active {
+							opacity: 0.01;
+							transition: opacity 300ms ease-in;
+						}
+
+					</style>
+				</head>
+				<body id="body_view">
+					<div id="app" style="flex: 1;">${markup}</div>
+					<style id="jss-server-side">${css}</style>
+					<script src="/bundle.production.min.js" type="text/javascript"></script>
 				</body>
 			</html>
 		`)

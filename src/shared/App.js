@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { ActionCreators } from './actions/index'
 
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 class App extends Component {
 	constructor(props) {

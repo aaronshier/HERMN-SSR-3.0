@@ -7,7 +7,7 @@ let browserConfig, serverConfig
 
 
 if(production){
-  console.log({production})
+  console.log({production: true})
   browserConfig = {
     entry: './src/browser/index.js',
     output: {
@@ -64,7 +64,7 @@ if(production){
   }
 
 } else {
-  console.log({production})
+  console.log({production: false})
   browserConfig = {
     entry: './src/browser/index.js',
     output: {
@@ -89,7 +89,6 @@ if(production){
         threshold: 10240,
         minRatio: 0.8
       }),
-      
     ]
   }
 

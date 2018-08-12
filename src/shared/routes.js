@@ -3,6 +3,7 @@ import { fetchDemoData } from './services/outbound'
 import Login from './containers/Login'
 import Signup from './containers/Signup'
 import TestApi from './containers/TestApi'
+import Transitions from './containers/Transitions'
 
 const routes = [
 	{
@@ -10,6 +11,12 @@ const routes = [
 		exact: true,
 		component: Home,
 		title: 'SSR Home Page'
+	},
+	{
+		path: '/trans',
+		exact: true,
+		component: Transitions,
+		title: 'Transitions Test'
 	},
 	{
 		path: '/login',

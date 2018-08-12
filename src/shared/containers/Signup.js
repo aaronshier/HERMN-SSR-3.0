@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { NavLink as Link } from 'react-router-dom'
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -75,71 +75,71 @@ class SignUp extends Component<{}> {
 	render() {
 		const { error, open, message } = this.state
 		return (
-	 		<div id="signup-page" style={styles.pageWrap}>
+			<div id="signup-page" style={styles.pageWrap}>
 				<div style={styles.panelWrap}>
 					<h1 style={styles.title}>Register Your Account</h1>
-				 	<form action="/api/signup" id="signup-form" method="POST" className="login-form" style={styles.formWrap}>
-				        <FormControl fullWidth>
-				          <InputLabel htmlFor="login-email">Email</InputLabel>
-				          <Input 
-				          	color="primary" 
-				          	id="login-email" 
-				          	name="email"
-				          	onChange={(event) => this.handleChange('email', event)} />
-				        </FormControl><br /><br />
-				        <FormControl fullWidth>
-				          <InputLabel htmlFor="login-password">Password</InputLabel>
-				          <Input
-				          	color="primary"
-				            id="login-password"
-          					name="password"
-				            type={this.state.showPassword ? 'text' : 'password'}
-				            onChange={(event) => this.handleChange('password', event)}
-				            endAdornment={
-				              <InputAdornment position="end">
-				                <IconButton
-				                  aria-label="Toggle password visibility"
-				                  onClick={()=> this.handleClickShowPasssword()}
-				                  onMouseDown={()=> this.handleMouseDownPassword()}
-				                >
-			                  		{this.state.showPassword ? <Visibility /> : <VisibilityOff />}
-				                </IconButton>
-				              </InputAdornment>
-				            }
-				          />
-			          	</FormControl><br /><br />
-					    <div style={{ margin: 'auto'}}>    
-						    <Button 
-						    	value="Sign In"
-						    	style={styles.button}
-						    	variant="raised" 
-						    	color="primary"
-						    	onClick={ this.handleRegisteration }>
-						      <FaEnvelope style={{position: 'absolute', left: 8, top: 7, fontSize: '25px'}}/>
-						      SIGN UP WITH EMAIL
-						    </Button>
-						    <p style={{textAlign: 'center', margin: '0 0 10px'}}>OR</p>
-							<a href={`${server}/auth/google`} style={{textDecoration: 'none'}}>  
-							    <Button style={{width: '100%', height: '40px'}} variant="raised" color="secondary">
-							      <FaGoogle style={{position: 'absolute', left: 8, fontSize: '25px'}}/> 
-							      <span style={{marginRight: '5px', fontSize: '18px'}}>Sign up With GOOGLE</span>
-							    </Button>
-					       	</a>
-				       	</div>
-				       	<div style={{marginTop: '40px', textAlign: 'center'}}>
-				       	<p>Already signed up?</p>
-				       	<a href="/login"><Button>log in</Button></a>
-				       	</div>
-				 	</form>
-				 	<Snackbar
-				 		anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-				 		open={open}
-				 		onClose={() => this.setState({open: false})}
-				 		SnackbarContentProps={{ 'aria-describedby': 'message-id' }}
-				 		message={<span id="message-id">{this.state.error && (<font style={{color: '#f00', fontWeight: 800}}>OOPS! </font>)}{message}</span>}
-			 		/>
-			 	</div>
-		 	</div>
+					<form action="/api/signup" id="signup-form" method="POST" className="login-form" style={styles.formWrap}>
+						<FormControl fullWidth>
+							<InputLabel htmlFor="login-email">Email</InputLabel>
+							<Input 
+								color="primary" 
+								id="login-email" 
+								name="email"
+								onChange={(event) => this.handleChange('email', event)} />
+						</FormControl><br /><br />
+						<FormControl fullWidth>
+							<InputLabel htmlFor="login-password">Password</InputLabel>
+							<Input
+								color="primary"
+								id="login-password"
+								name="password"
+								type={this.state.showPassword ? 'text' : 'password'}
+								onChange={(event) => this.handleChange('password', event)}
+								endAdornment={
+									<InputAdornment position="end">
+										<IconButton
+											aria-label="Toggle password visibility"
+											onClick={()=> this.handleClickShowPasssword()}
+											onMouseDown={()=> this.handleMouseDownPassword()}
+										>
+												{this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+										</IconButton>
+									</InputAdornment>
+								}
+							/>
+						</FormControl><br /><br />
+						<div style={{ margin: 'auto'}}>    
+							<Button 
+								value="Sign In"
+								style={styles.button}
+								variant="raised" 
+								color="primary"
+								onClick={ this.handleRegisteration }>
+								<FaEnvelope style={{position: 'absolute', left: 8, top: 7, fontSize: '25px'}}/>
+								SIGN UP WITH EMAIL
+							</Button>
+							<p style={{textAlign: 'center', margin: '0 0 10px'}}>OR</p>
+								<a href={`${server}/auth/google`} style={{textDecoration: 'none'}}>  
+								<Button style={{width: '100%', height: '40px'}} variant="raised" color="secondary">
+									<FaGoogle style={{position: 'absolute', left: 8, fontSize: '25px'}}/> 
+									<span style={{marginRight: '5px', fontSize: '18px'}}>Sign up With GOOGLE</span>
+								</Button>
+								</a>
+						</div>
+						<div style={{marginTop: '40px', textAlign: 'center'}}>
+							<p>Already signed up?</p>
+							<Link to="/login"><Button>log in</Button></Link>
+						</div>
+					</form>
+					<Snackbar
+						anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+						open={open}
+						onClose={() => this.setState({open: false})}
+						SnackbarContentProps={{ 'aria-describedby': 'message-id' }}
+						message={<span id="message-id">{this.state.error && (<font style={{color: '#f00', fontWeight: 800}}>OOPS! </font>)}{message}</span>}
+					/>
+				</div>
+			</div>
 		)
 	}
 }

@@ -4,10 +4,15 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { ActionCreators } from '../actions/index'
 import Button from '@material-ui/core/Button';
+import { CSSTransitionGroup } from 'react-transition-group'
 
   const navBarLoggedOut = [{
     url: '/',
     name: 'Home'
+  },
+  {
+    url: '/trans',
+    name: 'Transitions'
   },
   {
     url: '/login',
@@ -46,19 +51,26 @@ class NavBar extends Component {
     const {user} = this.props.state
     const navigation = user.loggedIn ? navBarLoggedIn : navBarLoggedOut
     return (
-      <div className="navbar">
-      <h1 style={{fontSize: 80}}>HERMN SSR 1.0</h1>
-        <ul style={{position: 'absolute', bottom: 0, right: 0}}>
-          {navigation.map(({ name, url }, key) => (
-            <NavLink key={key} activeStyle={{fontWeight: 'bold'}} to={url}>
-              <Button style={{color: '#fff'}}>
-                {name}
-              </Button>
-            </ NavLink>
-          ))}
-          { user.loggedIn && (<a href="/logout"><Button style={{color: '#fff'}}>Log Out</Button></a>) }
-        </ul>
-      </div>
+      <CSSTransitionGroup
+        transitionName="fade"
+        transitionAppear={true}
+        transitionAppearTimeout={500}
+        transitionEnter={false}
+        transitionLeave={false}>
+          <div className="navbar">
+          <h1 style={{fontSize: 80}}>HERMN SSR 1.0</h1>
+            <ul style={{position: 'absolute', bottom: 0, right: 0}}>
+              {navigation.map(({ name, url }, key) => (
+                <NavLink key={key} activeStyle={{fontWeight: 'bold'}} to={url}>
+                  <Button style={{color: '#fff'}}>
+                    {name}
+                  </Button>
+                </ NavLink>
+              ))}
+              { user.loggedIn && (<a href="/logout"><Button style={{color: '#fff'}}>Log Out</Button></a>) }
+            </ul>
+          </div>
+      </CSSTransitionGroup>
     )
   }
 }

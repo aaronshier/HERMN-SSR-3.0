@@ -1,17 +1,6 @@
 export default {
-    pageWrap: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '20px',
-        minHeight: '50vh'
-    },
-    panelWrap: {
-        flex:1,
-        padding: '20px',
-        maxWidth: '460px',
-        margin: '40px auto'
-    },
+    pageWrap: {display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px' },
+    panelWrap: {flex:1, padding: '20px', maxWidth: '460px', margin: '40px auto'},
     title: {
         textAlign: 'center'
     },
